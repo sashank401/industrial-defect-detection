@@ -32,7 +32,7 @@ def main():
 
     cv2.imwrite(str(output_dir / "grayscale.png"), gray_image)
     cv2.imwrite(str(output_dir / "edges.png"), edges)
-
+    print("Canny edge detection completed!")
     print("Grayscale image saved to outputs/grayscale.png")
     print("Edge image saved to outputs/edges.png")
 
