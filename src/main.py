@@ -35,6 +35,7 @@ def main():
     print("Canny edge detection completed!")
     print("Grayscale image saved to outputs/grayscale.png")
     print("Edge image saved to outputs/edges.png")
+    print("Image processing completed successfully!")
 
     # Step 4: Display results
     cv2.imshow("Original Image", image)
