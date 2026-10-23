@@ -25,7 +25,8 @@ def main():
 
     # Step 2: Detect edges
     edges = cv2.Canny(gray_image, 100, 200)
-
+    edge_pixels = cv2.countNonZero(edges)
+    print("Number of edge pixels detected:", edge_pixels)
     # Step 3: Save processed images
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
