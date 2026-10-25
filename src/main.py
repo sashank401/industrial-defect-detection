@@ -19,7 +19,7 @@ def main():
     print("Image dimensions:", image.shape)
     print("Image height:", image.shape[0])
     print("Image width:", image.shape[1])
-
+    print("Total pixels:", image.shape[0] * image.shape[1])
     # Step 1: Convert to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
