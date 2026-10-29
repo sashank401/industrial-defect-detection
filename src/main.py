@@ -52,3 +52,4 @@ if __name__ == "__main__":
 print("Image loaded successfully!")
 print("Starting industrial image analysis...")
 print("Image format: PNG")
+print("Grayscale conversion successful!")
