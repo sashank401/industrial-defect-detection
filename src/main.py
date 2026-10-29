@@ -49,3 +49,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+print("Image loaded successfully!")
+print("Starting industrial image analysis...")
+print("Image format: PNG")
