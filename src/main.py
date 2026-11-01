@@ -50,6 +50,7 @@ def main():
 if __name__ == "__main__":
     main()
 print("Image loaded successfully!")
+print("Industrial image analysis started!")
 print("Starting industrial image analysis...")
 print("Image format: PNG")
 print("Grayscale conversion successful!")
