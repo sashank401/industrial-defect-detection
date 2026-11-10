@@ -1,0 +1,119 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "title": "Edge FPS Throughput",
+      "type": "gauge",
+      "targets": [{ "expr": "defect_detection_fps", "legendFormat": "FPS" }],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 60,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 15 },
+              { "color": "green", "value": 25 }
+            ]
+          },
+          "unit": "fps"
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "title": "Camera Status & Uptime",
+      "type": "stat",
+      "targets": [{ "expr": "defect_detection_camera_uptime_seconds", "legendFormat": "Uptime" }],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null }
+            ]
+          },
+          "unit": "s"
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "title": "Total Parts Inspected",
+      "type": "stat",
+      "targets": [{ "expr": "defect_detection_parts_inspected_total", "legendFormat": "Parts" }],
+      "fieldConfig": {
+        "defaults": { "color": { "mode": "palette-classic" }, "unit": "short" }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "title": "Rejection Rate (%)",
+      "type": "stat",
+      "targets": [{ "expr": "(defect_detection_parts_rejected_total / clamp_min(defect_detection_parts_inspected_total, 1)) * 100", "legendFormat": "Rejection %" }],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 5 },
+              { "color": "red", "value": 15 }
+            ]
+          },
+          "unit": "percent"
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+      "id": 5,
+      "title": "Inference Latency Distribution (P50, P90, P99)",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "histogram_quantile(0.50, sum(rate(defect_detection_inference_latency_seconds_bucket[1m])) by (le)) * 1000", "legendFormat": "p50 (ms)" },
+        { "expr": "histogram_quantile(0.90, sum(rate(defect_detection_inference_latency_seconds_bucket[1m])) by (le)) * 1000", "legendFormat": "p90 (ms)" },
+        { "expr": "histogram_quantile(0.99, sum(rate(defect_detection_inference_latency_seconds_bucket[1m])) by (le)) * 1000", "legendFormat": "p99 (ms)" }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ms" }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+      "id": 6,
+      "title": "Defect Breakdown by Classification Type",
+      "type": "piechart",
+      "targets": [
+        { "expr": "sum by (defect_type) (defect_detection_defects_total)", "legendFormat": "{{defect_type}}" }
+      ]
+    }
+  ],
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["industrial", "quality-control", "cv", "edge"],
+  "time": { "from": "now-15m", "to": "now" },
+  "timezone": "browser",
+  "title": "Industrial Defect Detection - Edge Telemetry",
+  "version": 1
+}

@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 1s
+  evaluation_interval: 1s
+
+scrape_configs:
+  - job_name: "industrial_defect_detection"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["app:8000", "localhost:8000", "host.docker.internal:8000"]
+        labels:
+          environment: "edge_assembly_line"
+          app: "defect_detector"

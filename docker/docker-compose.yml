@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  defect-detector:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: industrial-defect-detector
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../outputs:/app/outputs
+      - ../models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - industrial-net
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    container_name: industrial-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - industrial-net
+
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: industrial-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=industrialqc
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ../monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - industrial-net
+
+networks:
+  industrial-net:
+    driver: bridge
