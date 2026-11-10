@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Defect Detection System | Quality Control Console</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b1120;
+            --bg-secondary: #131d31;
+            --bg-card: #182339;
+            --border: #293854;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-orange: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-badge {
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #fff;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .brand h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            background-color: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* KPI Row */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .kpi-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .kpi-value {
+            font-size: 1.85rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-main);
+        }
+
+        /* Workspace Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            padding: 1rem 1.25rem;
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h2 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Benchmark Selectors */
+        .benchmark-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .pill-btn {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            color: #cbd5e1;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .pill-btn:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: #283548;
+        }
+
+        .pill-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Preview Canvas */
+        .viewer-container {
+            position: relative;
+            background-color: #050811;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .viewer-container img {
+            max-width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .viewer-placeholder {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(19, 29, 49, 0.4);
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #0b1120;
+            font-weight: 600;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            font-size: 0.875rem;
+        }
+
+        .btn:hover {
+            background-color: #7dd3fc;
+        }
+
+        .btn-danger {
+            background-color: var(--accent-red);
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #f87171;
+        }
+
+        .defect-log {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            background-color: #070b14;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            max-height: 220px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .log-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .log-reject {
+            border-left: 3px solid var(--accent-red);
+            color: #fca5a5;
+        }
+
+        .log-accept {
+            border-left: 3px solid var(--accent-green);
+            color: #86efac;
+        }
+
+        .verdict-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .verdict-reject {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+
+        .verdict-accept {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <span class="brand-badge">EDGE CV</span>
+            <h1>Real-Time Industrial Defect Detection System</h1>
+        </div>
+        <div class="header-status">
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                <span>Quality Inspection Online</span>
+            </div>
+            <div>Accelerator: <strong id="acceleratorType" style="color:var(--accent)">ONNX Runtime</strong></div>
+            <div>Model: <strong>YOLOv8n-NEU</strong></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- KPI Row -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <span class="kpi-title">Inference Speed</span>
+                <span class="kpi-value" id="fpsVal">-- FPS</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-title">Inference Latency</span>
+                <span class="kpi-value" id="latencyVal">-- ms</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-title">Total Parts Scanned</span>
+                <span class="kpi-value" id="scannedVal">0</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-title">Defective Rejects</span>
+                <span class="kpi-value" id="rejectsVal" style="color:var(--accent-red)">0</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-title">Scrap Rejection Rate</span>
+                <span class="kpi-value" id="rejectionRateVal">0.0%</span>
+            </div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="dashboard-grid">
+            <!-- Left: Inspection Viewer & NEU Sample Selector -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Industrial Defect Inspection Station</h2>
+                    <span style="font-size:0.8rem; color:var(--text-muted)">NEU Surface Defect Database</span>
+                </div>
+                <div class="card-body">
+                    <p style="font-size:0.85rem; color:var(--text-muted)">Select a defect category to test the edge vision pipeline:</p>
+                    <div class="benchmark-bar">
+                        <button class="pill-btn" onclick="testSample('scratches')">Scratches</button>
+                        <button class="pill-btn" onclick="testSample('crazing')">Crazing</button>
+                        <button class="pill-btn" onclick="testSample('inclusion')">Inclusion</button>
+                        <button class="pill-btn" onclick="testSample('pitted_surface')">Pitted Surface</button>
+                        <button class="pill-btn" onclick="testSample('rolled-in_scale')">Rolled-in Scale</button>
+                        <button class="pill-btn" onclick="testSample('patches')">Patches</button>
+                    </div>
+
+                    <div class="viewer-container" id="viewerWrapper">
+                        <div class="viewer-placeholder" id="viewerPlaceholder">
+                            Select a sample above or drop an image below to run defect inspection.
+                        </div>
+                        <img id="mainDisplayImg" style="display:none;" alt="Inspected Surface">
+                    </div>
+
+                    <div id="quickResultStrip" style="display:none; justify-content:space-between; align-items:center; background:#111927; padding:0.75rem 1rem; border-radius:6px; border:1px solid var(--border)">
+                        <div>
+                            <span>Verdict: </span>
+                            <span id="verdictBadge" class="verdict-tag verdict-accept">ACCEPT</span>
+                            <span id="defectCountText" style="margin-left:1rem; font-size:0.85rem; color:var(--text-muted)">0 defects</span>
+                        </div>
+                        <div style="font-family:'JetBrains Mono'; font-size:0.85rem; color:var(--accent)" id="latencyText">-- ms</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Upload Custom Part & PLC Diverter Log -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Manual Upload & PLC Actuator Control</h2>
+                    <a href="/metrics" target="_blank" style="color:var(--accent); font-size:0.8rem; text-decoration:none">Prometheus &rarr;</a>
+                </div>
+                <div class="card-body">
+                    <!-- Custom Image Upload -->
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="uploadCustomPart(event)">
+                        <p style="font-weight:500">Drop custom metal part image or <span style="color:var(--accent)">Browse</span></p>
+                        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem">Supports PNG, JPG, BMP formats</p>
+                    </div>
+
+                    <div id="defectDetailList" style="display:none; font-size:0.85rem; background:#0f172a; padding:0.75rem; border-radius:6px; border:1px solid var(--border)">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem">
+                        <span style="font-size:0.85rem; color:var(--text-muted)">PLC Diverter Piston: <strong style="color:var(--accent-green)">ARMED</strong></span>
+                        <button class="btn btn-danger" onclick="triggerManualPLC()">Test Reject Solenoid</button>
+                    </div>
+
+                    <h3 style="font-size:0.875rem; margin-top:0.5rem">PLC Sorting Events (Debounced):</h3>
+                    <div class="defect-log" id="sortingLog">
+                        <div class="log-entry log-accept">
+                            <span>SYSTEM_READY: Waiting for inspection</span>
+                            <span>READY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function updateHealth() {
+            try {
+                const res = await fetch('/api/v1/health');
+                const data = await res.json();
+                document.getElementById('acceleratorType').innerText = data.backend.toUpperCase();
+                document.getElementById('fpsVal').innerText = data.fps > 0 ? (data.fps + ' FPS') : 'Active';
+                document.getElementById('latencyVal').innerText = data.latency_ms > 0 ? (data.latency_ms + ' ms') : '-- ms';
+                document.getElementById('scannedVal').innerText = data.parts_scanned;
+                document.getElementById('rejectsVal').innerText = data.parts_rejected;
+                const rate = data.parts_scanned > 0 ? ((data.parts_rejected / data.parts_scanned) * 100).toFixed(1) : '0.0';
+                document.getElementById('rejectionRateVal').innerText = rate + '%';
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        async function testSample(defectClass) {
+            document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+            if (event && event.target) event.target.classList.add('active');
+
+            const placeholder = document.getElementById('viewerPlaceholder');
+            const img = document.getElementById('mainDisplayImg');
+            placeholder.style.display = 'block';
+            placeholder.innerText = `Running edge inference on ${defectClass} sample...`;
+            img.style.display = 'none';
+
+            try {
+                const res = await fetch(`/api/v1/inspect-sample?defect_class=${defectClass}`, { method: 'POST' });
+                const data = await res.json();
+                renderInspectionResult(data);
+            } catch (e) {
+                placeholder.innerText = 'Error: ' + e.message;
+            }
+        }
+
+        async function uploadCustomPart(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const placeholder = document.getElementById('viewerPlaceholder');
+            const img = document.getElementById('mainDisplayImg');
+            placeholder.style.display = 'block';
+            placeholder.innerText = 'Inspecting uploaded manufactured part...';
+            img.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/v1/detect', { method: 'POST', body: formData });
+                const data = await res.json();
+                renderInspectionResult(data);
+            } catch (e) {
+                placeholder.innerText = 'Upload Error: ' + e.message;
+            }
+        }
+
+        function renderInspectionResult(data) {
+            const placeholder = document.getElementById('viewerPlaceholder');
+            const img = document.getElementById('mainDisplayImg');
+            const strip = document.getElementById('quickResultStrip');
+            const badge = document.getElementById('verdictBadge');
+            const countText = document.getElementById('defectCountText');
+            const latencyText = document.getElementById('latencyText');
+            const detailList = document.getElementById('defectDetailList');
+
+            placeholder.style.display = 'none';
+            img.style.display = 'block';
+            img.src = 'data:image/jpeg;base64,' + data.annotated_image_base64;
+
+            strip.style.display = 'flex';
+            const isReject = data.action === 'REJECT';
+            badge.className = isReject ? 'verdict-tag verdict-reject' : 'verdict-tag verdict-accept';
+            badge.innerText = data.action;
+
+            countText.innerText = `${data.detections_count} defect(s) detected (Max Severity: ${data.max_severity})`;
+            latencyText.innerText = `${data.latency_ms} ms (${data.fps} FPS)`;
+
+            // Right side detail list
+            detailList.style.display = 'block';
+            if (data.detections && data.detections.length > 0) {
+                detailList.innerHTML = '<strong>Defect Breakdown:</strong><ul style="padding-left:1.2rem; margin-top:0.4rem; line-height:1.4">' +
+                    data.detections.map(d =>
+                        `<li><strong style="color:var(--accent)">${d.class_name}</strong>: ${(d.confidence * 100).toFixed(1)}% conf | Box: [${d.bbox.join(', ')}] | Severity: ${(d.severity * 100).toFixed(0)}%</li>`
+                    ).join('') + '</ul>';
+            } else {
+                detailList.innerHTML = '<span style="color:var(--accent-green)">&#10003; Clean metallic surface. No defects found.</span>';
+            }
+
+            updateHealth();
+            fetchSortingLog();
+        }
+
+        async function triggerManualPLC() {
+            try {
+                const res = await fetch('/api/v1/plc/trigger', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({defect_class: 'manual_operator_test', severity: 0.95, confidence: 1.0})
+                });
+                const data = await res.json();
+                alert('PLC Solenoid Actuator Fired: ' + data.dispatch.network_status);
+                fetchSortingLog();
+            } catch (e) {
+                alert('PLC Trigger Failed: ' + e);
+            }
+        }
+
+        async function fetchSortingLog() {
+            try {
+                const res = await fetch('/api/v1/plc/status');
+                const data = await res.json();
+                const logContainer = document.getElementById('sortingLog');
+                if (data.recent_events && data.recent_events.length > 0) {
+                    logContainer.innerHTML = data.recent_events.map(ev => `
+                        <div class="log-entry log-reject">
+                            <span>${ev.part_id}: ${ev.defect_class}</span>
+                            <span>REJECT (${(ev.severity * 100).toFixed(0)}% sev)</span>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) {}
+        }
+
+        // Initialize with default sample
+        testSample('scratches');
+        setInterval(updateHealth, 2500);
+        setInterval(fetchSortingLog, 3000);
+    </script>
+</body>
+</html>

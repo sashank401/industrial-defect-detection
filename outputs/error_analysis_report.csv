@@ -1,0 +1,15 @@
+Metric,Count
+TOTAL_GT,72
+TOTAL_PRED,121
+TP,50
+FP,68
+FN,19
+MISCLASSIFIED,3
+
+Defect Class,Ground Truths,True Positives,False Positives,False Negatives
+crazing,21,9,47,12
+inclusion,16,16,1,0
+patches,8,8,0,0
+pitted_surface,4,3,23,1
+rolled-in_scale,14,10,0,4
+scratches,9,4,0,2

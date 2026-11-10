@@ -1,7 +1,8 @@
-
 __pycache__/
+.pytest_cache/
 .venv/
 venv/
-data/
-outputs/
 .env
+*.log
+outputs/runs/
+.vscode/

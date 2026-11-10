@@ -1,0 +1,598 @@
+{
+    "total_images_analyzed": 24,
+    "summary": {
+        "total_gt": 72,
+        "total_pred": 121,
+        "tp": 50,
+        "fp": 68,
+        "fn": 19,
+        "misclassified": 3
+    },
+    "per_class": {
+        "crazing": {
+            "gt": 21,
+            "tp": 9,
+            "fp": 47,
+            "fn": 12
+        },
+        "inclusion": {
+            "gt": 16,
+            "tp": 16,
+            "fp": 1,
+            "fn": 0
+        },
+        "patches": {
+            "gt": 8,
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+        },
+        "pitted_surface": {
+            "gt": 4,
+            "tp": 3,
+            "fp": 23,
+            "fn": 1
+        },
+        "rolled-in_scale": {
+            "gt": 14,
+            "tp": 10,
+            "fp": 0,
+            "fn": 4
+        },
+        "scratches": {
+            "gt": 9,
+            "tp": 4,
+            "fp": 0,
+            "fn": 2
+        }
+    },
+    "error_samples": [
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.93
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.625
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.569
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.508
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.434
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0001.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.984
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.883
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.866
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.807
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.762
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.66
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.56
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.489
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.455
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.415
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0002.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.996
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.892
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.491
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.468
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.453
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.977
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.972
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.691
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.582
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.531
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "crazing_0004.jpg",
+            "type": "false_negative",
+            "missed_class": "crazing"
+        },
+        {
+            "image_id": "inclusion_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.899
+        },
+        {
+            "image_id": "inclusion_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.396
+        },
+        {
+            "image_id": "inclusion_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.499
+        },
+        {
+            "image_id": "inclusion_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "inclusion_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "inclusion_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.999
+        },
+        {
+            "image_id": "patches_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.596
+        },
+        {
+            "image_id": "patches_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.361
+        },
+        {
+            "image_id": "pitted_surface_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.995
+        },
+        {
+            "image_id": "pitted_surface_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.872
+        },
+        {
+            "image_id": "pitted_surface_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.516
+        },
+        {
+            "image_id": "pitted_surface_0001.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.448
+        },
+        {
+            "image_id": "pitted_surface_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "pitted_surface_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.996
+        },
+        {
+            "image_id": "pitted_surface_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.94
+        },
+        {
+            "image_id": "pitted_surface_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.756
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.999
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.938
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "inclusion",
+            "confidence": 0.917
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.561
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.388
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.38
+        },
+        {
+            "image_id": "pitted_surface_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "pitted_surface"
+        },
+        {
+            "image_id": "rolled-in_scale_0001.jpg",
+            "type": "false_negative",
+            "missed_class": "rolled-in_scale"
+        },
+        {
+            "image_id": "rolled-in_scale_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.939
+        },
+        {
+            "image_id": "rolled-in_scale_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.406
+        },
+        {
+            "image_id": "rolled-in_scale_0002.jpg",
+            "type": "false_negative",
+            "missed_class": "rolled-in_scale"
+        },
+        {
+            "image_id": "rolled-in_scale_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "rolled-in_scale_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.998
+        },
+        {
+            "image_id": "rolled-in_scale_0003.jpg",
+            "type": "false_negative",
+            "missed_class": "rolled-in_scale"
+        },
+        {
+            "image_id": "rolled-in_scale_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "rolled-in_scale_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "rolled-in_scale_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.935
+        },
+        {
+            "image_id": "rolled-in_scale_0004.jpg",
+            "type": "false_negative",
+            "missed_class": "rolled-in_scale"
+        },
+        {
+            "image_id": "scratches_0001.jpg",
+            "type": "misclassification",
+            "true_class": "scratches",
+            "pred_class": "crazing",
+            "iou": 0.815,
+            "confidence": 0.603
+        },
+        {
+            "image_id": "scratches_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "scratches_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "scratches_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.999
+        },
+        {
+            "image_id": "scratches_0002.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.825
+        },
+        {
+            "image_id": "scratches_0002.jpg",
+            "type": "false_negative",
+            "missed_class": "scratches"
+        },
+        {
+            "image_id": "scratches_0003.jpg",
+            "type": "misclassification",
+            "true_class": "scratches",
+            "pred_class": "crazing",
+            "iou": 0.918,
+            "confidence": 0.66
+        },
+        {
+            "image_id": "scratches_0003.jpg",
+            "type": "misclassification",
+            "true_class": "scratches",
+            "pred_class": "crazing",
+            "iou": 0.794,
+            "confidence": 0.605
+        },
+        {
+            "image_id": "scratches_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.983
+        },
+        {
+            "image_id": "scratches_0003.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 0.656
+        },
+        {
+            "image_id": "scratches_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "scratches_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "pitted_surface",
+            "confidence": 1.0
+        },
+        {
+            "image_id": "scratches_0004.jpg",
+            "type": "false_positive",
+            "pred_class": "crazing",
+            "confidence": 0.999
+        },
+        {
+            "image_id": "scratches_0004.jpg",
+            "type": "false_negative",
+            "missed_class": "scratches"
+        }
+    ],
+    "root_cause_analysis": [
+        {
+            "defect_type": "crazing",
+            "risk": "False Negatives under low-illumination",
+            "cause": "Fine micro-cracks blend with steel rolling grains if lighting angle is flat.",
+            "mitigation": "Deploy directional darkfield illumination or CLAHE contrast normalization."
+        },
+        {
+            "defect_type": "inclusion",
+            "risk": "False Positives from water droplets/airborne dust",
+            "cause": "High-contrast particulate dots resemble oxide inclusion pits.",
+            "mitigation": "Apply temporal persistence filtering across 3 consecutive video frames."
+        },
+        {
+            "defect_type": "scratches",
+            "risk": "Confusion with crazing cracks",
+            "cause": "Linear scratches can exhibit branching patterns similar to crazing networks.",
+            "mitigation": "Incorporate aspect ratio and linearity feature constraints in post-processing."
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+[
+    {
+        "resolution": 320,
+        "confidence_threshold": 0.25,
+        "latency_ms": 18.69,
+        "fps": 53.5,
+        "mAP50": 0.5501
+    },
+    {
+        "resolution": 320,
+        "confidence_threshold": 0.35,
+        "latency_ms": 18.69,
+        "fps": 53.5,
+        "mAP50": 0.4428
+    },
+    {
+        "resolution": 320,
+        "confidence_threshold": 0.5,
+        "latency_ms": 18.69,
+        "fps": 53.5,
+        "mAP50": 0.411
+    },
+    {
+        "resolution": 480,
+        "confidence_threshold": 0.25,
+        "latency_ms": 33.76,
+        "fps": 29.6,
+        "mAP50": 0.7492
+    },
+    {
+        "resolution": 480,
+        "confidence_threshold": 0.35,
+        "latency_ms": 33.76,
+        "fps": 29.6,
+        "mAP50": 0.7474
+    },
+    {
+        "resolution": 480,
+        "confidence_threshold": 0.5,
+        "latency_ms": 33.76,
+        "fps": 29.6,
+        "mAP50": 0.7223
+    },
+    {
+        "resolution": 640,
+        "confidence_threshold": 0.25,
+        "latency_ms": 59.07,
+        "fps": 16.9,
+        "mAP50": 0.6805
+    },
+    {
+        "resolution": 640,
+        "confidence_threshold": 0.35,
+        "latency_ms": 59.07,
+        "fps": 16.9,
+        "mAP50": 0.65
+    },
+    {
+        "resolution": 640,
+        "confidence_threshold": 0.5,
+        "latency_ms": 59.07,
+        "fps": 16.9,
+        "mAP50": 0.6279
+    }
+]

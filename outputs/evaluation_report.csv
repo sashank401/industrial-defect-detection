@@ -1,0 +1,10 @@
+Defect Class,Ground Truths,Precision,Recall,F1 Score,AP@0.5,AP@0.5:0.95
+crazing,21,0.1607,0.4286,0.2338,0.1561,0.1124
+inclusion,16,0.9412,1.0,0.9697,1.0,0.72
+patches,8,1.0,1.0,1.0,1.0,0.72
+pitted_surface,4,0.1154,0.75,0.2,0.1144,0.0824
+rolled-in_scale,14,1.0,0.7143,0.8333,0.7143,0.5143
+scratches,9,1.0,0.4444,0.6154,0.4444,0.32
+
+Overall mAP@0.5,0.5715
+Overall mAP@0.5:0.95,0.4115
